@@ -39,13 +39,13 @@
 &dcan1 {
 	status = "okay";
 	pinctrl-names = "default";
-	pinctrl-0 = <&dcan1_default>;
+	pinctrl-0 = <&dcan1_pins_default>;
 };
 
 &mmc1 {
 	status = "okay";
 	pinctrl-names = "default";
-	pinctrl-0 = <&mmc0_default>;   /* NOTE mmc0 vs mmc1 naming difference - by design. */
+	pinctrl-0 = <&mmc0_pins_default>;   /* NOTE mmc0 vs mmc1 naming difference - by design. */
 };
 
 &uart2 {
