@@ -72,41 +72,6 @@
 		stdout-path = &uart0;
 	};
 
-	leds {
-		pinctrl-names = "default";
-		pinctrl-0 = <&user_leds_s0>;
-
-		compatible = "gpio-leds";
-
-		led2 {
-			label = "beaglebone:green:usr0";
-			gpios = <&gpio1 21 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "heartbeat";
-			default-state = "off";
-		};
-
-		led3 {
-			label = "beaglebone:green:usr1";
-			gpios = <&gpio1 22 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "mmc0";
-			default-state = "off";
-		};
-
-		led4 {
-			label = "beaglebone:green:usr2";
-			gpios = <&gpio1 23 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "cpu0";
-			default-state = "off";
-		};
-
-		led5 {
-			label = "beaglebone:green:usr3";
-			gpios = <&gpio1 24 GPIO_ACTIVE_HIGH>;
-			linux,default-trigger = "mmc1";
-			default-state = "off";
-		};
-	};
-
 	vmmcsd_fixed: fixedregulator0 {
 		compatible = "regulator-fixed";
 		regulator-name = "vmmcsd_fixed";
@@ -116,8 +81,6 @@
 };
 
 &am33xx_pinmux {
-
-
 	emmc_pins: pinmux-emmc-pins {
 		pinctrl-single,pins = <
 			AM33XX_IOPAD(0x880, PIN_INPUT_PULLUP | MUX_MODE2) /* gpmc_csn1.mmc1_clk */
@@ -132,12 +95,6 @@
 			AM33XX_IOPAD(0x81c, PIN_INPUT_PULLUP | MUX_MODE1) /* gpmc_ad7.mmc1_dat7 */
 		>;
 	};
-};
-&uart0 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&uart0_pins>;
-
-	status = "okay";
 };
 
 &usb {
@@ -172,44 +129,27 @@
 	status = "okay";
 };
 
-&i2c2 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&i2c2_pins>;
-	status = "disabled";
-	clock-frequency = <100000>;
-};
-
 &cpsw_emac0 {
 	phy_id = <&davinci_mdio>, <4>;
 	phy-mode = "rgmii-txid";
-};
-
-&mac {
-	slaves = <1>;
-	pinctrl-names = "default", "sleep";
-	pinctrl-0 = <&cpsw_default>;
-	pinctrl-1 = <&cpsw_sleep>;
-	status = "okay";
-};
-
-&davinci_mdio {
-	pinctrl-names = "default", "sleep";
-	pinctrl-0 = <&davinci_mdio_default>;
-	pinctrl-1 = <&davinci_mdio_sleep>;
-	status = "disabled";
 };
 
 &mmc1 {
 	status = "okay";
 	bus-width = <0x4>;
 	pinctrl-names = "default";
-	pinctrl-0 = <&mmc1_pins>;
-	cd-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+	pinctrl-0 = <&mmc0_pins_default>;   /* NOTE mmc0 vs mmc1 naming difference - by design. */
 };
 
 &rtc {
 	clocks = <&clk_32768_ck>, <&l4_per_clkctrl AM3_CLKDIV32K_CLKCTRL 0>;
 	clock-names = "ext-clk", "int-clk";
+};
+
+&uart0 {
+	status = "okay";
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart0_pins_default>;
 };
 
 &uart2 {
