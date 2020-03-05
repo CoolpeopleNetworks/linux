@@ -91,22 +91,6 @@
 
 &lcdc {
 	status = "disabled";
-
-	/* If you want to get 24 bit RGB and 16 BGR mode instead of
-	 * current 16 bit RGB and 24 BGR modes, set the propety
-	 * below to "crossed" and uncomment the video-ports -property
-	 * in tda19988 node.
-	 * AM335x errata for wiring:
-	 * http://www.ti.com/lit/er/sprz360i/sprz360i.pdf
-	 */
-
-	blue-and-red-wiring = "straight";
-
-	port {
-		lcdc_0: endpoint {
-			remote-endpoint = <&hdmi_0>;
-		};
-	};
 };
 
 &rtc {
@@ -382,7 +366,7 @@
 	status = "okay";
 	bus-width = <0x4>;
 	pinctrl-names = "default";
-	pinctrl-0 = <&mmc1_pins_default>;
+	pinctrl-0 = <&mmc1_pins>;
 };
 
 &rtc {
