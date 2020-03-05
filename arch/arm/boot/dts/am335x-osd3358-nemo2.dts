@@ -269,10 +269,15 @@
 		>;
 	};
 
-	uart5_pins_default: uart5_pins_default {
+	uart2_rxonly_pins_default: uart2_rxonly_pins_default {
 		pinctrl-single,pins = <
-			AM33XX_IOPAD(0x8c4, PIN_INPUT | MUX_MODE4) /* (U2) lcd_data9.uart5_rxd */
-			AM33XX_IOPAD(0x8c0, PIN_OUTPUT | MUX_MODE4) /* (U1) lcd_data8.uart5_txd */
+			AM33XX_IOPAD(0x950, PIN_INPUT | MUX_MODE1) /* (A17) spi0_sclk.uart2_rxd */
+		>;
+	};
+
+	uart3_rxonly_pins_default: uart3_rxonly_pins_default {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x960, PIN_INPUT | MUX_MODE1) /* (C15) spi0_cs1.uart3_rxd */
 		>;
 	};
 
@@ -283,15 +288,10 @@
 		>;
 	};
 
-	uart3_rxonly_pins_default: uart3_rxonly_pins_default {
+	uart5_pins_default: uart5_pins_default {
 		pinctrl-single,pins = <
-			AM33XX_IOPAD(0x960, PIN_INPUT | MUX_MODE1) /* (C15) spi0_cs1.uart3_rxd */
-		>;
-	};
-
-	uart2_rxonly_pins_default: uart2_rxonly_pins_default {
-		pinctrl-single,pins = <
-			AM33XX_IOPAD(0x950, PIN_INPUT | MUX_MODE1) /* (A17) spi0_sclk.uart2_rxd */
+			AM33XX_IOPAD(0x8c4, PIN_INPUT | MUX_MODE4) /* (U2) lcd_data9.uart5_rxd */
+			AM33XX_IOPAD(0x8c0, PIN_OUTPUT | MUX_MODE4) /* (U1) lcd_data8.uart5_txd */
 		>;
 	};
 };
@@ -359,7 +359,7 @@
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&davinci_mdio_default>;
 	pinctrl-1 = <&davinci_mdio_sleep>;
-	status = "disabled";
+	status = "okay";
 };
 
 &mmc1 {
