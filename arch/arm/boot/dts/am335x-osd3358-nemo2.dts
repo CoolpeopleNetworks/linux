@@ -320,7 +320,7 @@
 };
 
 &usb0_phy {
-	status = "okay";
+	status = "disabled";
 };
 
 &usb1_phy {
@@ -328,7 +328,7 @@
 };
 
 &usb0 {
-	status = "okay";
+	status = "disabled";
 	dr_mode = "peripheral";
 	interrupts-extended = <&intc 18 &tps 0>;
 	interrupt-names = "mc", "vbus";
