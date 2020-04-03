@@ -63,12 +63,26 @@
 		>;
 	};
 
+	/* Ethernet PHY Reset (active low) */
+	ethernet_phy_reset_n: ether-phy-reset-n {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x864, PIN_OUTPUT_PULLDOWN | MUX_MODE7) /* (U16) gpmc_a9.gpio1[25] */
+		>;
+	};
+
 	/* USB Overcurrent (active low) */
-	usb1_oc: usb1-oc {
+	usb1_oc_n: usb1-oc-n {
 		pinctrl-single,pins = <
 			AM33XX_IOPAD(0x868, PIN_INPUT | MUX_MODE7) /* (T16) gpmc_a10.gpio1[26] */
 		>;
 	};
+
+	/* EEPROM Write Enable */
+	eeprom_we: eeprom-we {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x86c, PIN_OUTPUT_PULLDOWN | MUX_MODE7) /* (V17) gpmc_a11.gpio1[27] */
+		>;
+	}
 };
 
 &rtc {
@@ -126,8 +140,8 @@
 &am33xx_pinmux {
 	user_leds_s0: user-leds-s0 {
 		pinctrl-single,pins = <
-			AM33XX_IOPAD(0x854, PIN_INPUT | MUX_MODE7) /* (V15) gpmc_a5.gpio1[21] */
-			AM33XX_IOPAD(0x858, PIN_INPUT | MUX_MODE7) /* (U15) gpmc_a6.gpio1[22] */
+			AM33XX_IOPAD(0x854, PIN_OUTPUT_PULLDOWN | MUX_MODE7) /* (V15) gpmc_a5.gpio1[21] */
+			AM33XX_IOPAD(0x858, PIN_OUTPUT_PULLDOWN | MUX_MODE7) /* (U15) gpmc_a6.gpio1[22] */
 		>;
 	};
 
