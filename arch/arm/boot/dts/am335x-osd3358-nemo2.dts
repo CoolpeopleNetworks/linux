@@ -82,7 +82,7 @@
 		pinctrl-single,pins = <
 			AM33XX_IOPAD(0x86c, PIN_OUTPUT_PULLDOWN | MUX_MODE7) /* (V17) gpmc_a11.gpio1[27] */
 		>;
-	}
+	};
 };
 
 &rtc {
