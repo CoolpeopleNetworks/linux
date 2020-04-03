@@ -65,7 +65,7 @@
 
 	/* USB Overcurrent (active low) */
 	usb1_oc: usb1-oc {
-		pingctrl-single,pins = <
+		pinctrl-single,pins = <
 			AM33XX_IOPAD(0x868, PIN_INPUT | MUX_MODE7) /* (T16) gpmc_a10.gpio1[26] */
 		>;
 	};
